@@ -15,7 +15,7 @@ def workflow(data_path):
 
     train.wait()
 
-    model_run_uri = mlflow.get_run(train.run_id).info.artifact_uri
+    model_run_uri = mlflow.get_run(train.run_id).info.artifact_uri  #questo è il path alla folder artifact salvata su LMflow
 
     evaluate = mlflow.run(".", "evaluate", parameters={"model_run_uri": "/".join([model_run_uri, 'classifier.keras'])}, env_manager="local") 
 
